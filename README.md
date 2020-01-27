@@ -39,15 +39,7 @@ repository folder.
 Just CPU:
 
 ```bash
-docker run -d --name face_detection -p 8000:80 \
-    -v $(pwd)/data:/data face_detection
-```
-
-For GPU support, first you need to install tensorflow-gpu and faiss-gpu and then build the docker with:
-
-```bash
-docker run -d --name face_detection -p 8000:80 \
-    --runtime=nvidia -v $(pwd)/data:/data face_detection
+docker run -d --name face_detection -p 8000:80
 ```
 
 After starting the container the service should listen on 127.0.0.1 port 8000.
@@ -59,7 +51,7 @@ The number of Gunicorn workers can be configured by setting the `NUM_WORKER` env
 For debugging it can be helpful to start the service manually. Run the container but overwrite the entrypoint with a Bash shell (you need to modify the version manually instead of 0.0.1):
 
 ```bash
-docker run -it -p 8000:80 --entrypoint=/bin/bash face_detection_service:0.0.1
+docker run -it -p 8000:80 --entrypoint=/bin/bash face_detection:0.0.1
 ```
 
 This starts the container and opens a shell but does not start the service. Start the service manually:
@@ -102,7 +94,7 @@ docker rmi $(docker images -q)
 
 ## Start service locally
 
-The service requires a YAML config file. The config file path can be specified by setting an environment variable `FACE_RECOGNITION_SERVICE_CONFIG`. The default is to load `service.yaml` from the current directory.
+The service requires a YAML config file. The config file path can be specified by setting an environment variable `FACE_DETECTION_SERVICE_CONFIG`. The default is to load `service.yaml` from the current directory.
 
 Start service locally:
 
@@ -130,10 +122,10 @@ ssh ubuntu@130.61.93.153
 Then on the host:
 
 ```bash
-docker stop face-recognition-services
+docker stop face-detection
 docker pull fra.ocir.io/aiconix/data-science/face_detection
 docker run -d --restart=always \
-    -h face-recognition-services \
+    -h face-detection \
     --name face_detection \
     -p 8000:80 -v $(pwd)/data:/data \
     fra.ocir.io/aiconix/data-science/face_detection
