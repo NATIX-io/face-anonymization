@@ -1,0 +1,6 @@
+
+# The service configuration used in the Dockerfile.
+
+ 
+# Min image size for MTCNN
+detect_min_size: 50
