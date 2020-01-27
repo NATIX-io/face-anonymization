@@ -1,4 +1,4 @@
-# Face Recognition Service
+# Face Detection
 
 This is an HTTP service that provides functions to detect faces in images. It includes:
 
@@ -109,26 +109,6 @@ PYTHONUNBUFFERED=TRUE FACE_DETECTION_CONFIG=./service.yaml gunicorn --reload --w
 ```bash
 git tag -a v#.##.#
 ./package-docker --push
-```
-
-### Update running service
-
-Just an example host we currently use:
-
-```bash
-ssh ubuntu@130.61.93.153
-```
-
-Then on the host:
-
-```bash
-docker stop face-detection
-docker pull fra.ocir.io/aiconix/data-science/face_detection
-docker run -d --restart=always \
-    -h face-detection \
-    --name face_detection \
-    -p 8000:80 -v $(pwd)/data:/data \
-    fra.ocir.io/aiconix/data-science/face_detection
 ```
 
 ## Gunicorn

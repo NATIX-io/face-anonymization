@@ -1,5 +1,5 @@
 
-# Dockerfile for the Face Recognition Service
+# Dockerfile for the Face Detection Service
 
 # Use an official Python runtime as a parent image
 FROM continuumio/miniconda3
