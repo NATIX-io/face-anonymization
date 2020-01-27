@@ -152,25 +152,3 @@ The most important Gunicorn configuration parameters are:
 * `--access-logfile` - Path of the access log file
 * `--error-logfile` -  Path of the error log file
 * `--daemon` - Daemonize the Gunicorn process
-
-## Kubernetes Deployment
-
-**NOTE: The current k8s deployment is only meant for testing and not
-secure!!**
-
-There is a test for a Kubernetes deployment in the [k8s](k8s) folder.
-The definitions there can be used to deploy the container on a
-Kubernetes installation and expose the service directly to the
-Internet on Port 443. It can be used as a starting point for a real
-production deployment.
-
-## TODO
-
-* [x] Creating multiple tables for the customers
-* [x] create the DB for different customers
-* [x] add requirements.txt for test script
-* [x] add links for the readmes
-* [x] to avoid copying of model: add extra copy step for model in docker file.
-* [ ] install gpu version of faiss and tensorflow
-* [x] adding success and failure for all the APIs
-* [ ] optimizing the code for face recognition

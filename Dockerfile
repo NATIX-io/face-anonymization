@@ -29,9 +29,7 @@ RUN conda install -c conda-forge gevent
 RUN conda install -c conda-forge gunicorn>=19.0
 RUN conda install -c conda-forge falcon>=2.0
 RUN conda install -c conda-forge tensorflow==1.14
-RUN conda install -c conda-forge pandas
-RUN conda install -c conda-forge pytorch-cpu
-RUN conda install -c conda-forge scikit-learn
+
 
 # Copy the current directory contents into the container at /app
 COPY . /app
