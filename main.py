@@ -2,8 +2,6 @@ import sys
 import os
 import io
 import importlib
-import pandas as pd
-import faiss
 import uuid
 import logging
 import random

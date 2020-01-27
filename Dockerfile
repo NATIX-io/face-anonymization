@@ -19,7 +19,6 @@ RUN apt-get install -y procps vim
 
 
 # Install any needed packages specified in requirements.txt
-RUN conda install -c pytorch faiss-cpu
 RUN conda install -c conda-forge opencv
 RUN conda install -c anaconda pyyaml 
 RUN conda install -c conda-forge imageio
@@ -40,7 +39,7 @@ RUN pip install mtcnn-0.0.1-py3-none-any.whl
 
 # compile in a version label so we always can find the source in git
 ARG VERSION=unspecified
-LABEL aiconix.face_detection.version=$VERSION
+LABEL face_detection.version=$VERSION
 
 # Make port 80 available to the world outside this container
 EXPOSE 80

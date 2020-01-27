@@ -44,8 +44,7 @@ Output:
 
 Example:
 ```bash
-    curl -H "Content-Type: image/jpg" \
-         -H 'customerId: aiconix' \
-         --data-binary "@$(pwd)/tests/sample_data/bruce_willis/216.jpg" \
+ curl -H "Content-Type: image/jpg" \
+         --data-binary "@/media/ali/data/ubuntu18files/Pictures/ali.jpg" \
          http://localhost:8000/face_detection
 ```

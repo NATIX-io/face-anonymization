@@ -18,21 +18,13 @@ For understanding the APIs and resources please refer to the folder [resources](
 In this part we explain how to build and run the docker.
 
 ### Build a Docker container
-
-Simply use
-
-```bash
-./package-docker.sh
-```
-
-or if you want to export the build container you can use
+ 
 
 ```bash
-./package-docker.sh --save-local
+sudo bin/docker_build_context.sh
+sudo docker build --tag=face_detection:0.0.1 build/docker
 ```
 
-it will then be saved with the generated version number next to the
-repository folder.
 
 ### Run Docker container
 

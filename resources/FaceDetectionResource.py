@@ -2,8 +2,6 @@ import sys
 import os
 import io
 import importlib
-import pandas as pd
-import faiss
 import uuid
 import logging
 import random
@@ -17,41 +15,8 @@ import yaml
 import numpy as np
 import mtcnn
 from mtcnn.face_detector import FaceDetector
-from classifiers.nn_classifier import EmbeddingNNClassifier
-
-def ensure_if_path_exists(pth):
-    # Create target Directory if don't exist
-    if not os.path.exists(pth):
-        os.makedirs(pth)
-    return None
 
 
-def create_initial_tables(pth, __cols__):
-    # Create target Directory if don't exist
-    if not os.path.exists(pth):
-        os.makedirs(pth)      
-    
-    # Create target file if don't exist
-    if not os.path.isfile(os.path.join(pth, 'table_with_name.pkl')):
-        df_name = pd.DataFrame(columns=__cols__)    
-        df_name.reset_index()[__cols__].to_pickle(os.path.join(pth, 'table_with_name.pkl'))
-    
-    # Create target file if don't exist
-    if not os.path.isfile(os.path.join(pth, 'table_without_name.pkl')):
-        df_without_name = pd.DataFrame(columns=__cols__)
-        df_without_name.reset_index()[__cols__].to_pickle(os.path.join(pth, 'table_without_name.pkl')) 
-    
-    return None
-
-def ensure_customer_information_exist(data_path,  __cols__, customer_id="aiconix" ):
-    faiss_index_path = os.path.join(data_path, customer_id,"nns")
-    ensure_if_path_exists(faiss_index_path)
-
-    table_path = os.path.join(data_path, customer_id,"db")
-    create_initial_tables(table_path,   __cols__)
-
-    image_import_path = os.path.join(data_path, customer_id,"pictures")
-    ensure_if_path_exists(image_import_path)
 
 def face_bounding_box(face, image):
 
